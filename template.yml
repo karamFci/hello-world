@@ -12,7 +12,7 @@ Resources:
       InstanceType: t3.micro
       UserData:
           Fn::Base64: !Sub |
-            !/bin/bash
+            #!/bin/bash
             sudo apt update -y
             sudo apt install software-properties-common -y
             sudo add-apt-repository --yes --update ppa:ansible/ansible
