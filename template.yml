@@ -10,6 +10,13 @@ Resources:
       KeyName: jenkey
       ImageId: 'ami-06878d265978313ca' # you may need to find out what instance types are available in your region - use https://cloud-images.ubuntu.com/locator/ec2/
       InstanceType: t3.micro
+      UserData:
+          Fn::Base64: !Sub |
+            !/bin/bash
+            sudo apt update -y
+            sudo apt install software-properties-common -y
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible -y
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
