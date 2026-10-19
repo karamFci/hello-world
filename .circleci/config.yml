@@ -28,15 +28,15 @@ jobs:
           command: echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run:
           name: Build image
-          command: docker build -f Dockerfile -t "$DOCKERHUB_USERNAME/karamhellodocker:$CIRCLE_SHA1" -t "$DOCKERHUB_USERNAME/karamhellodocker:latest" .
+          command: docker build -f Dockerfile -t "$DOCKERHUB_USERNAME/Test123:$CIRCLE_SHA1" -t "$DOCKERHUB_USERNAME/Test123:latest" .
       - run:
           name: Push image
           command: |
-            docker push "$DOCKERHUB_USERNAME/karamhellodocker:$CIRCLE_SHA1"
-            docker push "$DOCKERHUB_USERNAME/karamhellodocker:latest"
+            docker push "$DOCKERHUB_USERNAME/Test123:$CIRCLE_SHA1"
+            docker push "$DOCKERHUB_USERNAME/Test123:latest"
 
 workflows:
-  Agent-Test1:
+  test123:
     jobs:
       - test
       - build-and-push:
